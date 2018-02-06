@@ -53,10 +53,10 @@ app.post("/", (req, res) => {
         
         request.get(giphyurl, (error, response, body) => {
             const results = JSON.parse(body)["data"];
-            //Get up to the top five
-            const numTopResults = (results.length < 5) ? results.length : 5;
+            //Get up to the top ten
+            const numTopResults = (results.length < 10) ? results.length : 10;
             if (error || numTopResults === 0) {
-                sendMessage(botID, "Nothing found 😥");
+                sendMessage(botID, "Nothing there bro!");
             } else {
                 const indexSelected = Math.floor(Math.random() * (numTopResults));
                 const selected = results[indexSelected].images.original.url;
